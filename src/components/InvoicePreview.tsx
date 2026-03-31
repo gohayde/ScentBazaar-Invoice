@@ -2,6 +2,7 @@ import React from 'react';
 import { InvoiceData } from '../types';
 import '../invoice.css';
 import sbLogo from '../assets/sb-logo.png';
+import arpDisplayFont from '../assets/ARPDisplay-150.woff';
 
 interface Props {
   data: InvoiceData;
@@ -15,6 +16,7 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
 
   return (
     <div className="invoice-template-container" id="invoice-preview">
+      <style>{`@font-face { font-family: 'ARP Display'; src: url('${arpDisplayFont}') format('woff'); }`}</style>
       <div className="page">
         <div className="header">
           <div className="brand-logo">
