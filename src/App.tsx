@@ -92,17 +92,11 @@ export default function App() {
             </div>
           </div>
           <div className="flex gap-2">
-            <button 
+            <button
               onClick={handlePrint}
               className="flex-1 flex items-center justify-center bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-900 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
             >
-              <Printer className="w-4 h-4 mr-2" /> Print
-            </button>
-            <button 
-              onClick={handleDownloadPdf}
-              className="flex-1 flex items-center justify-center bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
-            >
-              <Download className="w-4 h-4 mr-2" /> Save PDF
+              <Printer className="w-4 h-4 mr-2" /> Print / Save PDF
             </button>
           </div>
         </div>
@@ -117,17 +111,11 @@ export default function App() {
       }`}>
         {/* Mobile action buttons in preview tab */}
         <div className="lg:hidden flex gap-2 mb-4 no-print">
-          <button 
+          <button
             onClick={handlePrint}
             className="flex-1 flex items-center justify-center bg-gray-800 text-white px-4 py-2.5 rounded-lg shadow-sm font-medium text-sm"
           >
-            <Printer className="w-4 h-4 mr-2" /> Print
-          </button>
-          <button 
-            onClick={handleDownloadPdf}
-            className="flex-1 flex items-center justify-center bg-blue-600 text-white px-4 py-2.5 rounded-lg shadow-sm font-medium text-sm"
-          >
-            <Download className="w-4 h-4 mr-2" /> Save PDF
+            <Printer className="w-4 h-4 mr-2" /> Print / Save PDF
           </button>
         </div>
 

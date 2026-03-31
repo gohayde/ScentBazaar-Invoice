@@ -21,23 +21,71 @@
 }
 
 @media print {
-  .no-print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* Hide everything except the invoice */
+  body > * {
     display: none !important;
   }
+
+  #root {
+    display: block !important;
+  }
+
+  #root > * {
+    display: none !important;
+  }
+
+  /* Show only the preview area */
   .print-area {
+    display: block !important;
     width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     background: white !important;
+    overflow: visible !important;
+    height: auto !important;
   }
-  body {
-    background: white;
+
+  .print-area > * {
+    display: block !important;
   }
-  #root {
-    padding: 0;
-    margin: 0;
+
+  .no-print {
+    display: none !important;
   }
-  .shadow-xl {
+
+  .invoice-scale-wrapper {
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .invoice-scale-wrapper > div {
+    transform: none !important;
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: 100% !important;
     box-shadow: none !important;
+  }
+
+  .invoice-template-container {
+    padding: 0 !important;
+  }
+
+  .invoice-template-container .page {
+    max-width: 100% !important;
+    min-width: unset !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 20mm 15mm !important;
   }
 }
