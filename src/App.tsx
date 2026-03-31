@@ -48,18 +48,26 @@ export default function App() {
     const element = document.getElementById('invoice-preview');
     if (!element) return;
 
+    // Temporarily expand element to full scroll height so nothing is clipped
+    const prevHeight = element.style.height;
+    element.style.height = element.scrollHeight + 'px';
+
     const canvas = await html2canvas(element, {
       scale: 2,
       useCORS: true,
-      backgroundColor: '#ffffff',
+      backgroundColor: '#FFF7EA',
       logging: false,
+      width: element.scrollWidth,
+      height: element.scrollHeight,
+      windowWidth: element.scrollWidth,
     });
+
+    element.style.height = prevHeight;
 
     const imgData = canvas.toDataURL('image/jpeg', 0.98);
     const imgW = canvas.width;
     const imgH = canvas.height;
 
-    // Create PDF sized exactly to the invoice content — no page splits
     const pdf = new jsPDF({ unit: 'px', format: [imgW, imgH], orientation: 'portrait' });
     pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
     pdf.save(`Invoice-${invoiceData.invoiceNo}.pdf`);
