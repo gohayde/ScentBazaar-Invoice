@@ -36,22 +36,26 @@ export default function App() {
   }, [invoiceData.items, invoiceData.vatRate]);
 
   const handlePrint = () => {
-    window.print();
+    setActiveTab('preview');
+    setTimeout(() => window.print(), 100);
   };
 
   const handleDownloadPdf = () => {
-    const element = document.getElementById('invoice-preview');
-    if (!element) return;
+    setActiveTab('preview');
+    setTimeout(() => {
+      const element = document.getElementById('invoice-preview');
+      if (!element) return;
 
-    const opt = {
-      margin:       0,
-      filename:     `Invoice-${invoiceData.invoiceNo}.pdf`,
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true },
-      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
+      const opt = {
+        margin:       0,
+        filename:     `Invoice-${invoiceData.invoiceNo}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
 
-    html2pdf().set(opt).from(element).save();
+      html2pdf().set(opt).from(element).save();
+    }, 100);
   };
 
   return (

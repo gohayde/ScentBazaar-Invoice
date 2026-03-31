@@ -115,9 +115,9 @@ export const InvoiceEditor: React.FC<Props> = ({ data, onChange }) => {
           <h2 className="text-lg font-semibold flex items-center text-gray-800">
             <List className="w-5 h-5 mr-2 text-blue-500" /> Items
           </h2>
-          <button 
+          <button
             onClick={addItem}
-            className="flex items-center text-sm bg-blue-50 text-blue-600 font-medium px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors border border-blue-200"
+            className="flex items-center text-sm bg-blue-50 text-blue-600 font-medium px-4 py-2.5 rounded-lg hover:bg-blue-100 transition-colors border border-blue-200 min-h-[44px]"
           >
             <Plus className="w-4 h-4 mr-1" /> Add Item
           </button>
@@ -125,50 +125,47 @@ export const InvoiceEditor: React.FC<Props> = ({ data, onChange }) => {
         
         <div className="space-y-3">
           {data.items.map((item, index) => (
-            <div key={item.id} className="flex flex-wrap md:flex-nowrap gap-3 items-start bg-white p-4 rounded-lg border border-gray-200 shadow-sm relative group transition-all hover:border-blue-300">
-              <div className="hidden md:block w-6 text-center pt-2.5 text-gray-400 font-medium text-sm">{index + 1}</div>
-              
-              <div className="w-full md:flex-1">
-                <label className="block text-xs font-medium text-gray-500 mb-1">Description</label>
-                <input 
-                  type="text" 
-                  value={item.description} 
-                  onChange={e => handleItemChange(item.id, 'description', e.target.value)}
-                  className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                  placeholder="Item description"
-                />
-              </div>
-              
-              <div className="w-[calc(50%-0.5rem)] md:w-24">
-                <label className="block text-xs font-medium text-gray-500 mb-1">Qty (kg)</label>
-                <input 
-                  type="number" 
-                  step="0.001"
-                  value={item.qty} 
-                  onChange={e => handleItemChange(item.id, 'qty', parseFloat(e.target.value) || 0)}
-                  className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                />
-              </div>
-              
-              <div className="w-[calc(50%-0.5rem)] md:w-24">
-                <label className="block text-xs font-medium text-gray-500 mb-1">Price</label>
-                <input 
-                  type="number" 
-                  step="0.01"
-                  value={item.unitPrice} 
-                  onChange={e => handleItemChange(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
-                  className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
-                />
-              </div>
-              
-              <div className="absolute -top-2 -right-2 md:static md:pt-6">
-                <button 
+            <div key={item.id} className="flex flex-col gap-2 bg-white p-4 rounded-lg border border-gray-200 shadow-sm transition-all hover:border-blue-300">
+              <div className="flex gap-3 items-start">
+                <div className="flex-1">
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Description</label>
+                  <input
+                    type="text"
+                    value={item.description}
+                    onChange={e => handleItemChange(item.id, 'description', e.target.value)}
+                    className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder="Item description"
+                  />
+                </div>
+                <button
                   onClick={() => removeItem(item.id)}
-                  className="bg-white md:bg-transparent text-red-500 hover:text-red-700 p-1.5 rounded-full shadow-sm md:shadow-none border border-gray-100 md:border-none hover:bg-red-50 transition-colors"
+                  className="mt-5 text-red-400 hover:text-red-600 p-2 rounded-lg hover:bg-red-50 transition-colors flex-shrink-0"
                   title="Remove item"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
+              </div>
+              <div className="flex gap-3">
+                <div className="flex-1">
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Qty (kg)</label>
+                  <input
+                    type="number"
+                    step="0.001"
+                    value={item.qty}
+                    onChange={e => handleItemChange(item.id, 'qty', parseFloat(e.target.value) || 0)}
+                    className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Price (AED)</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    value={item.unitPrice}
+                    onChange={e => handleItemChange(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                    className="w-full p-2 border border-gray-200 rounded-md text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+                </div>
               </div>
             </div>
           ))}
