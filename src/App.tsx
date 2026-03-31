@@ -3,7 +3,8 @@ import { InvoiceEditor } from './components/InvoiceEditor';
 import { InvoicePreview } from './components/InvoicePreview';
 import { InvoiceData } from './types';
 import { Printer, Download, Edit3, Eye } from 'lucide-react';
-import html2pdf from 'html2pdf.js';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { aedToWords } from './utils/numberToWords';
 
 export default function App() {
@@ -40,22 +41,35 @@ export default function App() {
     setTimeout(() => window.print(), 100);
   };
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdf = async () => {
     setActiveTab('preview');
-    setTimeout(() => {
-      const element = document.getElementById('invoice-preview');
-      if (!element) return;
+    await new Promise(r => setTimeout(r, 300));
 
-      const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `Invoice-${invoiceData.invoiceNo}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, logging: false },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
+    const element = document.getElementById('invoice-preview');
+    if (!element) return;
 
-      html2pdf().set(opt).from(element).save();
-    }, 300);
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+      logging: false,
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+    const pdf = new jsPDF({ unit: 'px', format: 'a4', orientation: 'portrait' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const imgW = pageW;
+    const imgH = (canvas.height * pageW) / canvas.width;
+
+    let y = 0;
+    while (y < imgH) {
+      if (y > 0) pdf.addPage();
+      pdf.addImage(imgData, 'JPEG', 0, -y, imgW, imgH);
+      y += pageH;
+    }
+
+    pdf.save(`Invoice-${invoiceData.invoiceNo}.pdf`);
   };
 
   return (
@@ -96,7 +110,13 @@ export default function App() {
               onClick={handlePrint}
               className="flex-1 flex items-center justify-center bg-gray-800 text-white px-4 py-2.5 rounded-lg hover:bg-gray-900 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
             >
-              <Printer className="w-4 h-4 mr-2" /> Print / Save PDF
+              <Printer className="w-4 h-4 mr-2" /> Print
+            </button>
+            <button
+              onClick={handleDownloadPdf}
+              className="flex-1 flex items-center justify-center bg-orange-600 text-white px-4 py-2.5 rounded-lg hover:bg-orange-700 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
+            >
+              <Download className="w-4 h-4 mr-2" /> Save PDF
             </button>
           </div>
         </div>
@@ -115,7 +135,13 @@ export default function App() {
             onClick={handlePrint}
             className="flex-1 flex items-center justify-center bg-gray-800 text-white px-4 py-2.5 rounded-lg shadow-sm font-medium text-sm"
           >
-            <Printer className="w-4 h-4 mr-2" /> Print / Save PDF
+            <Printer className="w-4 h-4 mr-2" /> Print
+          </button>
+          <button
+            onClick={handleDownloadPdf}
+            className="flex-1 flex items-center justify-center bg-orange-600 text-white px-4 py-2.5 rounded-lg shadow-sm font-medium text-sm"
+          >
+            <Download className="w-4 h-4 mr-2" /> Save PDF
           </button>
         </div>
 
