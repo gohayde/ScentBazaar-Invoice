@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
+@font-face {
+  font-family: 'ARP Display';
+  src: url('/ARPDisplay-150.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .invoice-template-container {
   --cream: #FFF7EA;
   --orange: #E84E0F;
@@ -9,7 +16,7 @@
   --row-alt: #F5F0EA;
   font-family: 'DM Sans', sans-serif;
   color: var(--black);
-  background: white;
+  background: var(--cream);
   padding: 40px 20px;
 }
 
@@ -20,7 +27,7 @@
   background: var(--cream);
   padding: 48px 52px;
   border-radius: 4px;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 60px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.10);
 }
 
 /* HEADER */
@@ -52,17 +59,22 @@
   background: var(--line);
 }
 
-.invoice-template-container .logo-typo {
-  height: 36px;
-  object-fit: contain;
+.invoice-template-container .logo-text {
+  font-family: 'ARP Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 1px;
 }
 
 .invoice-template-container .brand-tagline {
+  font-family: 'DM Sans', sans-serif;
   font-size: 11px;
-  color: var(--mid);
-  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  margin-top: 6px;
+  margin-top: 2px;
   padding-left: 2px;
 }
 

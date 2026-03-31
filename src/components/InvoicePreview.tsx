@@ -17,20 +17,14 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
       <div className="page">
         <div className="header">
           <div className="brand-logo">
-            {/* Replace the src below with your actual base64 logo string */}
-            <img 
-              className="logo-icon" 
-              src="https://via.placeholder.com/64x64?text=SB" 
-              alt="SB Icon" 
+            <img
+              className="logo-icon"
+              src="/SB Logo BG.png"
+              alt="SB Icon"
             />
             <div className="logo-divider"></div>
             <div>
-              {/* Replace the src below with your actual base64 typography string */}
-              <img 
-                className="logo-typo" 
-                src="https://via.placeholder.com/200x36?text=Scent+Bazaar" 
-                alt="Scent Bazaar" 
-              />
+              <div className="logo-text">Scent Bazaar</div>
               <div className="brand-tagline">Your Scent Supply HQ.</div>
             </div>
           </div>
