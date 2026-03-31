@@ -47,8 +47,8 @@
 }
 
 .invoice-template-container .logo-icon {
-  width: 64px;
   height: 64px;
+  width: auto;
   object-fit: contain;
   flex-shrink: 0;
 }
