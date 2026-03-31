@@ -46,26 +46,16 @@ export default function App() {
       const element = document.getElementById('invoice-preview');
       if (!element) return;
 
-      // Clone into a fixed-width container so html2canvas captures it at exactly 820px
-      const wrapper = document.createElement('div');
-      wrapper.style.cssText = 'position:fixed;top:0;left:0;width:820px;z-index:-9999;background:white;';
-      const clone = element.cloneNode(true) as HTMLElement;
-      clone.style.cssText = 'width:820px;padding:0;margin:0;';
-      wrapper.appendChild(clone);
-      document.body.appendChild(wrapper);
-
       const opt = {
-        margin: 0,
+        margin: [10, 10, 10, 10],
         filename: `Invoice-${invoiceData.invoiceNo}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, width: 820, windowWidth: 820 },
-        jsPDF: { unit: 'px', format: [820, 1160], orientation: 'portrait' }
+        html2canvas: { scale: 2, useCORS: true, logging: false },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      html2pdf().set(opt).from(wrapper).save().then(() => {
-        document.body.removeChild(wrapper);
-      });
-    }, 150);
+      html2pdf().set(opt).from(element).save();
+    }, 300);
   };
 
   return (
