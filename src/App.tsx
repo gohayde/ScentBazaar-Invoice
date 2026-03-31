@@ -115,7 +115,7 @@ export default function App() {
             </button>
             <button
               onClick={handleDownloadPdf}
-              className="flex-1 flex items-center justify-center bg-orange-600 text-white px-4 py-2.5 rounded-lg hover:bg-orange-700 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
+              className="flex-1 flex items-center justify-center bg-blue-600 text-white px-4 py-2.5 rounded-lg hover:bg-blue-700 shadow-sm transition-all active:scale-[0.98] text-sm font-medium"
             >
               <Download className="w-4 h-4 mr-2" /> Save PDF
             </button>
