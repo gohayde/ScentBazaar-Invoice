@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+.invoice-scale-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.invoice-scale-wrapper > div {
+  transform-origin: top left;
+}
+
+@media (max-width: 860px) {
+  .invoice-scale-wrapper {
+    overflow: visible;
+  }
+  .invoice-scale-wrapper > div {
+    transform: scale(calc(100vw / 860));
+    width: 860px;
+    margin-bottom: calc((860px - 100vw) * -1);
+  }
+}
+
 @media print {
   .no-print {
     display: none !important;

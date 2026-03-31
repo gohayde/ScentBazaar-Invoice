@@ -127,10 +127,12 @@ export default function App() {
           </button>
         </div>
 
-        {/* Wrapper to handle horizontal scrolling on small screens without breaking the layout */}
-        <div className="w-full overflow-x-auto pb-8">
-          <div className="min-w-[800px] max-w-4xl mx-auto shadow-2xl bg-white rounded-sm overflow-hidden">
-            <InvoicePreview data={invoiceData} />
+        {/* Scale invoice to fit screen width on mobile */}
+        <div className="w-full pb-8">
+          <div className="invoice-scale-wrapper">
+            <div className="min-w-[800px] max-w-4xl mx-auto shadow-2xl bg-white rounded-sm overflow-hidden">
+              <InvoicePreview data={invoiceData} />
+            </div>
           </div>
         </div>
       </div>
