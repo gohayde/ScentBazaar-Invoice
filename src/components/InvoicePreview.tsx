@@ -1,6 +1,7 @@
 import React from 'react';
 import { InvoiceData } from '../types';
 import '../invoice.css';
+import sbLogo from '../assets/sb-logo.png';
 
 interface Props {
   data: InvoiceData;
@@ -19,7 +20,7 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
           <div className="brand-logo">
             <img
               className="logo-icon"
-              src="/SB Logo BG.png"
+              src={sbLogo}
               alt="SB Icon"
             />
             <div className="logo-divider"></div>

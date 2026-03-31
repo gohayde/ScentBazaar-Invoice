@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'ARP Display';
-  src: url('/ARPDisplay-150.woff') format('woff');
+  src: url('../assets/ARPDisplay-150.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
