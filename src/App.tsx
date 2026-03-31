@@ -56,19 +56,12 @@ export default function App() {
     });
 
     const imgData = canvas.toDataURL('image/jpeg', 0.98);
-    const pdf = new jsPDF({ unit: 'px', format: 'a4', orientation: 'portrait' });
-    const pageW = pdf.internal.pageSize.getWidth();
-    const pageH = pdf.internal.pageSize.getHeight();
-    const imgW = pageW;
-    const imgH = (canvas.height * pageW) / canvas.width;
+    const imgW = canvas.width;
+    const imgH = canvas.height;
 
-    let y = 0;
-    while (y < imgH) {
-      if (y > 0) pdf.addPage();
-      pdf.addImage(imgData, 'JPEG', 0, -y, imgW, imgH);
-      y += pageH;
-    }
-
+    // Create PDF sized exactly to the invoice content — no page splits
+    const pdf = new jsPDF({ unit: 'px', format: [imgW, imgH], orientation: 'portrait' });
+    pdf.addImage(imgData, 'JPEG', 0, 0, imgW, imgH);
     pdf.save(`Invoice-${invoiceData.invoiceNo}.pdf`);
   };
 
