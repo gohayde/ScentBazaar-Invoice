@@ -1,7 +1,6 @@
 import React from 'react';
 import { InvoiceData } from '../types';
 import '../invoice.css';
-import sbLogo from '../assets/sb-logo.png';
 import arpDisplayFont from '../assets/ARPDisplay-150.woff';
 
 interface Props {
@@ -20,12 +19,6 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
       <div className="page">
         <div className="header">
           <div className="brand-logo">
-            <img
-              className="logo-icon"
-              src={sbLogo}
-              alt="SB Icon"
-            />
-            <div className="logo-divider"></div>
             <div>
               <div className="logo-text">Scent Bazaar</div>
               <div className="brand-tagline">Your Scent Supply HQ.</div>
