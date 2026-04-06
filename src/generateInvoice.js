@@ -102,7 +102,7 @@ export function generateInvoiceHtml(businessDetails, customerDetails, invoiceDet
             <p>Invoice No: <strong>${invoiceDetails.invoiceNo}</strong><br/>Date: ${invoiceDetails.date}<br/>Due: ${invoiceDetails.dueDate}</p>
           </div>
           <div class="meta-block">
-            <h4>Total Qty</h4>
+            <h4>Total Units</h4>
             <p><strong>${totalQty.toFixed(3)}</strong><br/>${items.length} line items<br/>VAT: ${invoiceDetails.vatRate}%</p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export function generateInvoiceHtml(businessDetails, customerDetails, invoiceDet
               <tr>
                 <th>#</th>
                 <th>Item Description</th>
-                <th class="r">Qty</th>
+                <th class="r">Units</th>
                 <th class="r">Unit Price</th>
                 <th class="r">Total</th>
               </tr>
@@ -127,7 +127,7 @@ export function generateInvoiceHtml(businessDetails, customerDetails, invoiceDet
         <div class="totals-area">
           <div class="totals-box">
             <div class="totals-row">
-              <span class="totals-label">Total Quantity</span>
+              <span class="totals-label">Total Units</span>
               <span>${totalQty.toFixed(3)}</span>
             </div>
             <div class="totals-row">

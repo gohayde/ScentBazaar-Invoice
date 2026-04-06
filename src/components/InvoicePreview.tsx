@@ -52,7 +52,7 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
             </p>
           </div>
           <div className="meta-block">
-            <h4>Total Qty</h4>
+            <h4>Total Units</h4>
             <p>
               <strong>{totalQty.toFixed(3)}</strong><br />
               {data.items.length} line items<br />
@@ -67,7 +67,7 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
               <tr>
                 <th>#</th>
                 <th>Item Description</th>
-                <th className="r">Qty</th>
+                <th className="r">Units</th>
                 <th className="r">Unit Price</th>
                 <th className="r">Total (AED)</th>
               </tr>
@@ -89,7 +89,7 @@ export const InvoicePreview: React.FC<Props> = ({ data }) => {
         <div className="totals-area">
           <div className="totals-box">
             <div className="totals-row">
-              <span className="totals-label">Total Quantity</span>
+              <span className="totals-label">Total Units</span>
               <span>{totalQty.toFixed(3)}</span>
             </div>
             <div className="totals-row">

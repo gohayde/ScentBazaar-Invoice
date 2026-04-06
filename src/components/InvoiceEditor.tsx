@@ -147,7 +147,7 @@ export const InvoiceEditor: React.FC<Props> = ({ data, onChange }) => {
               </div>
               <div className="flex gap-3">
                 <div className="flex-1">
-                  <label className="block text-xs font-medium text-gray-500 mb-1">Qty</label>
+                  <label className="block text-xs font-medium text-gray-500 mb-1">Units</label>
                   <input
                     type="number"
                     step="0.001"
